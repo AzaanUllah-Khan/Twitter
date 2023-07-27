@@ -436,7 +436,7 @@ header section .profile_post_follow_bx .post_follow_bx .post nav i:hover {
 
 header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx {
     width: 100%;
-    height: 93%;
+    height: auto;
     overflow-y: auto;
 }
 
@@ -444,10 +444,8 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home
     width: 100%;
     height: auto;
     background-color: #fff;
-    padding: 12px 15px 10px;
+    padding: 12px 15px 0;
     display: flex;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
 }
 
 header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .home_profile_picture {
@@ -462,19 +460,17 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home
     width: 90%;
     height: auto;
     margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 10px;
 }
-header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx h3{
-   font-size: 14px;
-   font-weight: normal;
-   padding: 8px 10px;
-   border: 1px solid #eee;
-   border-radius: 30px;
+
+header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx h3 {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 8px 10px;
+    border: 1px solid #eee;
+    border-radius: 30px;
 }
-header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx i{
+
+header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx i {
     padding: 10px;
     background-color: #1ca1f1;
     color: white;
@@ -494,6 +490,7 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home
     border-radius: 30px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.039);
 }
+
 header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx textarea::-webkit-scrollbar {
     width: 0;
 }
@@ -508,8 +505,8 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home
 }
 
 header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx .select_media button {
-    width: 80px;
-    padding: 10px;
+    width: 100px;
+    padding: 2px 10px;
     border-radius: 20px;
     border: none;
     outline: none;
@@ -818,63 +815,77 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post
 }
 
 @media screen and (max-width: 1125px) {
-    header section{
+    header section {
         width: 100%;
     }
-    header section nav{
+
+    header section nav {
         height: 50px;
     }
-    header section::before{
+
+    header section::before {
         top: 50px;
     }
-    header aside{
+
+    header aside {
         display: none;
     }
+
     header section .profile_post_follow_bx {
         flex-direction: column;
         align-items: center;
         height: auto;
         top: 10%;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post{
-        height: 500px;
+
+    header section .profile_post_follow_bx .post_follow_bx .post {
+        height: auto;
     }
-    header section .profile_post_follow_bx .profile_bx .activity_bx{
+
+    header section .profile_post_follow_bx .profile_bx .activity_bx {
         display: none;
     }
-    header section .profile_post_follow_bx .profile_bx{
+
+    header section .profile_post_follow_bx .profile_bx {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 35px;
     }
-    header section .profile_post_follow_bx .profile_bx .profile_card{
+
+    header section .profile_post_follow_bx .profile_bx .profile_card {
         width: 90%;
     }
-    header section .profile_post_follow_bx .post_follow_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx {
         margin: 0;
         width: 90%;
         justify-content: center;
         margin-bottom: 10px;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post{
+
+    header section .profile_post_follow_bx .post_follow_bx .post {
         width: 75%;
     }
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx {
         width: 25%;
     }
 }
+
 @media screen and (max-width: 850px) {
-    header section .profile_post_follow_bx .post_follow_bx{
+    header section .profile_post_follow_bx .post_follow_bx {
         flex-direction: column;
         align-items: center;
         gap: 20px;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post{
+
+    header section .profile_post_follow_bx .post_follow_bx .post {
         width: 100%;
     }
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx {
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -882,65 +893,81 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post
         gap: 10px;
         margin-left: 0;
     }
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx .trend_for_you{
+
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx .trend_for_you {
         width: 50%;
     }
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx .you_should_follow{
+
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx .you_should_follow {
         margin: 0;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post nav{
+
+    header section .profile_post_follow_bx .post_follow_bx .post nav {
         height: 40px;
     }
 }
+
 @media screen and (max-width: 435px) {
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx{
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx {
         flex-direction: column;
     }
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx .trend_for_you{
+
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx .trend_for_you {
         width: 100%;
     }
-    header section .profile_post_follow_bx .post_follow_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx {
         width: 95%;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post nav ul li a{
+
+    header section .profile_post_follow_bx .post_follow_bx .post nav ul li a {
         margin: 0;
         padding: 0;
         font-size: 10px;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx {
         position: relative;
         display: flex;
         justify-content: end;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .content{
+
+    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .content {
         width: 90%;
         align-content: flex-end;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .post_profile{
+
+    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .post_profile {
         position: absolute;
         top: 10px;
         left: 15px;
         width: auto;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .post_profile img{
+
+    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .post_profile img {
         width: 30px;
         height: 30px;
         opacity: 0.45;
     }
-    header section .profile_post_follow_bx .post_follow_bx .follow_bx .you_should_follow .follow_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx .follow_bx .you_should_follow .follow_bx {
         flex-direction: row;
     }
-    header section nav ul{
+
+    header section nav ul {
         display: none;
     }
-    header section .profile_post_follow_bx .profile_bx .profile_card{
+
+    header section .profile_post_follow_bx .profile_bx .profile_card {
         width: 95%;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .home_profile_picture{
+
+    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .home_profile_picture {
         width: 40px;
         height: 40px;
     }
-    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx{
+
+    header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .home_page_first_bx .write_tweet_bx {
         width: 100%;
     }
 }

@@ -27,7 +27,6 @@ onAuthStateChanged(auth, async (user) => {
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
             if (doc.id == uid) {
-                document.getElementById('h1').innerHTML = "Hey " + doc.data().nameF
                 document.getElementById('h2').innerHTML = `${doc.data().nameF} ${doc.data().nameL}`
                 document.getElementById('nick').innerHTML = "@" + doc.data().nick
                 document.getElementById('loc').innerHTML = `<i class="fa fa-location-dot"></i>
@@ -40,7 +39,6 @@ onAuthStateChanged(auth, async (user) => {
         });
         getDownloadURL(ref(storage, user.email))
             .then((url) => {
-                document.getElementById('img').src = url
                 document.getElementById('img1').src = url
                 document.getElementById('img2').src = url
             })
@@ -76,101 +74,27 @@ onAuthStateChanged(auth, async (user) => {
     });
 });
 
-const logout = document.getElementById('lO')
-logout.addEventListener('click', () => {
-    Swal.fire({
-        title: 'Are you sure you want to LogOut?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#1ca1f1',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Logout!'
-    }).then(async (result) => {
-        if (result.isConfirmed) {
-            signOut(auth).then(() => {
-                Swal.fire(
-                    'Logout!',
-                    'User has successfully logged out.',
-                    'success'
-                ).then(() => {
-                    location.replace('./index.html')
-                })
-                // Sign-out successful.
-            }).catch((error) => {
-                // An error happened.
-            });
-        }
-    })
+const post = document.getElementById('post')
+post.addEventListener('click', async () => {
+    const pT = document.getElementById('pt').value
+    var n = new Date()
+    var h = n.getHours()
+    var m = n.getMinutes()
+    try {
+        const docRef = await addDoc(collection(db, "posts"), {
+            text: pT,
+            time: `${h}:${m}`,
+            sender: CurrentUserName,
+            senderEmail: CurrentUserEmail,
+            senderNick: CurrentUserNick
+        });
+        // Wait for the new post to be added, then update the posts on the page.
+        await a();
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
 })
 
-
-async function a() {
-    var post_here = document.getElementById('post_here')
-    const querySnapshot = await getDocs(collection(db, "posts"));
-    querySnapshot.forEach((doc) => {
-        getDownloadURL(ref(storage, doc.data().senderEmail))
-            .then((url) => {
-                post_here.innerHTML += ` 
-            <div class="post_card_bx">
-        <div class="post_profile">
-        <img src="${url}">
-        </div>
-        <div class="content">
-        <div class="top_user_sec">
-        <div class="first">
-        <h5>${doc.data().sender}</h5>
-        <h6>${doc.data().senderNick}</h6>
-        </div>
-        <div class="time">
-        <i class="fa-regular fa-clock"></i>
-        <p>${doc.data().time}</p>
-        </div>
-        </div>
-        <p class="text_of_post">${doc.data().text}</p>
-        <div class="data">
-                                    <div class="data_card">
-                                    <i class="fa-solid fa-comment"></i>
-                                    <h4>870</h4>
-                                        </div>
-                                        <div class="data_card">
-                                        <i class="fa-solid fa-retweet"></i>
-                                        <h4>11.3k</h4>
-                                        </div>
-                                        <div class="data_card">
-                                        <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                                        <h4>89</h4>
-                                        </div>
-                                        <div class="data_card">
-                                        <i class="fa-solid fa-reply"></i>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>`
-
-            })
-    });
-
-}
-// const post = document.getElementById('post')
-// post.addEventListener('click', async () => {
-//     const pT = document.getElementById('pt').value
-//     var n = new Date()
-//     var h = n.getHours()
-//     var m = n.getMinutes()
-//     try {
-//         const docRef = await addDoc(collection(db, "posts"), {
-//             text: pT,
-//             time: `${h}:${m}`,
-//             sender: CurrentUserName,
-//             senderEmail: CurrentUserEmail,
-//             senderNick: CurrentUserNick
-//         });
-//         // Wait for the new post to be added, then update the posts on the page.
-//         await a();
-//     } catch (e) {
-//         console.error("Error adding document: ", e);
-//     }
-// })
 function abc() {
     if (document.getElementById('nameUserSearch').value != "") {
         localStorage.setItem("searchingUser", (document.getElementById('nameUserSearch').value).toLowerCase())
@@ -185,4 +109,3 @@ function abc() {
     }
 }
 window.abc = abc
-a()
