@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', serif;
+}
+
+.profile_bx {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile_bx .profile_card {
+    position: relative;
+    width: 50%;
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.09);
+    padding: 15px 10px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile_bx .profile_img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile_bx h5 {
+    font-weight: 600;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.profile_bx h6 {
+    color: rgba(0, 0, 0, .3);
+    font-size: 10px;
+    text-transform: lowercase;
+}
+
+.profile_bx address {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.profile_bx address a {
+    text-decoration: none;
+    color: #000;
+    font-size: 11px;
+    font-style: normal;
+    text-transform: uppercase;
+}
+.aR{
+    margin-right: 10px;
+}
+.profile_bx address a:nth-child(2) {
+    margin-left: 10px;
+}
+
+.profile_bx p {
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 5px;
+    color: rgba(0, 0, 0, .8);
+    text-transform: uppercase;
+}
+
+.profile_bx .data {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.profile_bx button {
+    margin: 15px 0 0;
+    padding: 10px 50px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #1ca1f1;
+    cursor: pointer;
+    transition: all .3s linear;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.profile_bx button:hover {
+    background-color: rgb(28, 161, 241, 0.5);
+}
+
+.profile_bx .data .data_card {
+    width: 33.33%;
+}
+
+.profile_bx .data .data_card:nth-child(2) {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.profile_bx .data .data_card p,
+h4 {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 0;
+    color: rgba(0, 0, 0, .4);
+}
+
+.profile_bx .data .data_card h4 {
+    font-size: 12px;
+    padding: 3px 0 7px;
+    color: #000;
+}
+
+@media screen and (max-width: 500px) {
+    .profile_bx .profile_card{
+        width: 90%;
+    }
+}

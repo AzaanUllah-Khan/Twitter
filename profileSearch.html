@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Profiles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://img.icons8.com/color/50/000000/twitter--v1.png">
+    <link rel="stylesheet" href="pS.css">
+</head>
+
+<body>
+    <div class="profile_bx">
+
+        <div class="profile_card">
+            <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_640.jpg" class="profile_img"
+                id="img">
+            <h5 id="h2">User Name</h5>
+            <h6 id="nick">@usernickname</h6>
+            <address>
+                <a href="" id="loc">
+                </a>
+                <a href="">
+                    <i class="fa-solid fa-earth-asia"></i>
+                </a>
+            </address>
+            <p id="ab">I am a web developer Learning HTML CSS AND JS</p>
+            <div class="data">
+                <div class="data_card">
+                    <p>Tweets</p>
+                    <h4>870</h4>
+                </div>
+                <div class="data_card">
+                    <p>Followers</p>
+                    <h4>11.3k</h4>
+                </div>
+                <div class="data_card">
+                    <p>Following</p>
+                    <h4>89</h4>
+                </div>
+            </div>
+            <button onclick="location.replace('./main.html')">Back To Home</button>
+        </div>
+    </div>
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+        import { collection, getDocs, getFirestore, query, where } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+        import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuuU5hk7qAe_1eXP2HrBFI7e-zxE3PTZw",
+            authDomain: "twitter-clone-254e1.firebaseapp.com",
+            projectId: "twitter-clone-254e1",
+            storageBucket: "twitter-clone-254e1.appspot.com",
+            messagingSenderId: "639210020071",
+            appId: "1:639210020071:web:e3eee6df2495543a2f5642",
+            measurementId: "G-B3ZNMTGVKJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage();
+        var auth = getAuth()
+
+
+
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const uid = user.uid;
+                const querySnapshot = await getDocs(collection(db, "users"));
+                querySnapshot.forEach((doc) => {
+                    if (doc.id == uid) {
+                        show(doc.data().name)
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+        async function show(n) {
+            console.log(n);
+            const q = query(collection(db, "users"), where("name", "==", localStorage.getItem("searchingUser")));
+
+            const querySnapshot = await getDocs(q);
+            if (!querySnapshot.empty) {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.data().name);
+                    document.getElementById('ab').innerHTML = doc.data().about;
+                    document.getElementById('loc').innerHTML = `<i class="fa fa-location-dot aR"></i>${doc.data().country}`;
+                    document.getElementById('nick').innerHTML = doc.data().nick;
+                    if (doc.data().name == n) {
+                        document.getElementById('h2').innerHTML = `${doc.data().name} (You)`;
+                    }
+                    else {
+                        document.getElementById('h2').innerHTML = doc.data().name;
+                    }
+                    getDownloadURL(ref(storage, doc.data().email))
+                        .then((url) => {
+                            document.getElementById('img').src = url;
+                        })
+                        .catch((error) => {
+                            console.log("Error fetching download URL:", error);
+                        });
+                });
+            } else {
+                document.getElementById('ab').innerHTML = "-----";
+                document.getElementById('loc').innerHTML = `<i class="fa fa-location-dot aR"></i>--`;
+                document.getElementById('nick').innerHTML = "--";
+                document.getElementById('h2').innerHTML = "User Not Found";
+                document.getElementById('img').src = "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

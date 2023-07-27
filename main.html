@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter main</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://img.icons8.com/color/50/000000/twitter--v1.png">
+</head>
+
+<body>
+    <header>
+        <aside>
+            <a href="./index.html" class="logo">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+            <ul>
+                <li><a href=""><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a href=""><i class="fa-solid fa-hashtag"></i>Explore</a></li>
+                <li><a href=""><i class="fa-solid fa-bell"></i>Notifications</a></li>
+                <li><a href=""><i class="fa-solid fa-message"></i>Message</a></li>
+                <li><a href=""><i class="fa-solid fa-bookmark"></i>Bookmark</a></li>
+                <li><a href=""><i class="fa-solid fa-clipboard-list"></i>List</a></li>
+                <li><a href=""><i class="fa-solid fa-user"></i>Profiles</a></li>
+                <li><a href=""><i class="fa-solid fa-ellipsis"></i>More</a></li>
+            </ul>
+            <button>Tweet</button>
+        </aside>
+        <section>
+            <nav>
+                <ul>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Help</a></li>
+                </ul>
+                <div class="search_bar">
+                    <i class="fa fa-search" onclick="abc()"></i>
+                    <input type="text" placeholder="Search on Twitter" id="nameUserSearch">
+                </div>
+                <div class="user">
+                    <h6 id="h1">Hey User</h6>
+                    <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" id="img" onclick="window.location.href = './profileManage.html' ">
+                </div>
+            </nav>
+
+            <!-- ------------------ -->
+            <!-- ------------------ -->
+            <!-- ------------------ -->
+            <!-- ------------------ -->
+
+
+
+
+            <div class="profile_post_follow_bx">
+                <div class="profile_bx">
+                    <div class="profile_card">
+                        <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" class="profile_img" id="img1">
+                        <h5 id="h2">User Name</h5>
+                        <h6 id="nick">@usernickname</h6>
+                        <address>
+                            <a href="" id="loc">
+                                <i class="fa fa-location-dot"></i>
+                                Country
+                            </a>
+                            <a href="">
+                                <i class="fa-solid fa-earth-asia"></i>
+                            </a>
+                        </address>
+                        <p id="ab">I am a web developer Learning HTML CSS AND JS</p>
+                        <div class="data">
+                            <div class="data_card">
+                                <p>Tweets</p>
+                                <h4>870</h4>
+                            </div>
+                            <div class="data_card">
+                                <p>Followers</p>
+                                <h4>11.3k</h4>
+                            </div>
+                            <div class="data_card">
+                                <p>Following</p>
+                                <h4>89</h4>
+                            </div>
+                        </div>
+                        <button id="lO">Logout</button>
+                    </div>
+                    <div class="activity_bx">
+                        <div class="activity_card_bx">
+                            <i class="fa-solid fa-eye"></i>
+                            <h6>Acitivity</h6>
+                        </div>
+                        <div class="activity_card_bx">
+                            <i class="fa-solid fa-bolt"></i>
+                            <h6>Moments</h6>
+                        </div>
+                        <div class="activity_card_bx">
+                            <i class="fa-solid fa-user-group"></i>
+                            <h6>Friends</h6>
+                        </div>
+                        <div class="activity_card_bx">
+                            <i class="fa-solid fa-gear"></i>
+                            <h6>Edit Profile</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="post_follow_bx">
+                    <div class="post">
+                        <nav>
+                            <ul>
+                                <li><a href="">Tweets</a></li>
+                                <li><a href="">Tweets & Followers</a></li>
+                                <li><a href="">Media</a></li>
+                                <li><a href="">Likes</a></li>
+                            </ul>
+                            <i class="fa fa-ellipsis"></i>
+                        </nav>
+
+                        <div class="post_main_bx" id="post_here">
+
+                            <div class="home_page_first_bx">
+                                <img id="img2" class="home_profile_picture"
+                                    src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png">
+                                <div class="write_tweet_bx">
+                                    <textarea id="pt" placeholder="What's Happenning"></textarea>
+                                    <div class="select_media">
+                                        <i class="fa-solid fa-face-smile emoji_select"></i>
+
+                                        <button id="post">Post
+                                            <i class="fa-solid fa-paper-plane "></i>
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="follow_bx">
+                        <div class="trend_for_you">
+                            <nav>
+                                <h6>Trends For You</h6>
+                                <i class="fa-solid fa-gear"></i>
+                            </nav>
+                            <div class="trend_bx">
+                                <div class="rate">
+                                    <li><a href="">#coldplay <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                    <li><a href="">#kanewilliamsom <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                    <li><a href="">#rishabpant <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                    <li><a href="">#babarazam <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                </div>
+                                <button>SEE MORE</button>
+                            </div>
+                        </div>
+                        <div class="you_should_follow trend_for_you" id="shouldFollow">
+                            <nav>
+                                <h6>You Should Follow</h6>
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

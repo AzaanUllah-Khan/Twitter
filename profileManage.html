@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter main</title>
+    <link rel="stylesheet" href="profileManage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://img.icons8.com/color/50/000000/twitter--v1.png">
+</head>
+
+<body>
+    <header>
+        <section>
+            <nav>
+                <ul>
+                    <li><a href="">About</a></li>
+                    <li onclick="location.replace('./main.html')"><a href="">Back to Home</a></li>
+                </ul>
+                <div class="search_bar">
+                    <i class="fa fa-search" onclick="abc()"></i>
+                    <input type="text" placeholder="Search on Twitter" id="nameUserSearch">
+                </div>
+                <div class="user">
+                    <h6 id="h1">Hey User</h6>
+                    <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" id="img"
+                        onclick="window.location.href = './main.html' ">
+                </div>
+            </nav>
+
+            <!-- ------------------ -->
+            <!-- ------------------ -->
+            <!-- ------------------ -->
+            <!-- ------------------ -->
+
+
+
+
+            <div class="profile_post_follow_bx">
+                <div class="profile_bx">
+                    <div class="profile_card">
+                        <img src="https://cdn.landesa.org/wp-content/uploads/default-user-image.png" class="profile_img"
+                            id="img1">
+                        <h5 id="h2">User Name</h5>
+                        <h6 id="nick">@usernickname</h6>
+                        <address>
+                            <a href="" id="loc">
+                                <i class="fa fa-location-dot"></i>
+                                Country
+                            </a>
+                            <a href="">
+                                <i class="fa-solid fa-earth-asia"></i>
+                            </a>
+                        </address>
+                        <p id="ab">I am a web developer Learning HTML CSS AND JS</p>
+                        <div class="data">
+                            <div class="data_card">
+                                <p>Tweets</p>
+                                <h4>870</h4>
+                            </div>
+                            <div class="data_card">
+                                <p>Followers</p>
+                                <h4>11.3k</h4>
+                            </div>
+                            <div class="data_card">
+                                <p>Following</p>
+                                <h4>89</h4>
+                            </div>
+                        </div>
+                        <button id="edit" onclick="location.replace('./profile.html')">Edit Profile</button>
+                    </div>
+                </div>
+                <div class="post_follow_bx">
+                    <div class="post">
+                        <nav>
+                            <i class="fa fa-ellipsis"></i>
+                            <h1 style="font-size: 14px;">Your Posts</h1>
+                        </nav>
+
+                        <div class="post_main_bx" id="post_box">
+                        </div>
+                    </div>
+                    <div class="follow_bx">
+                        <div class="trend_for_you">
+                            <nav>
+                                <h6>Trends For You</h6>
+                                <i class="fa-solid fa-gear"></i>
+                            </nav>
+                            <div class="trend_bx">
+                                <div class="rate">
+                                    <li><a href="">#coldplay <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                    <li><a href="">#kanewilliamsom <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                    <li><a href="">#rishabpant <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                    <li><a href="">#babarazam <br>
+                                            <p>937k tweets</p>
+                                        </a> <i class="fa-solid fa-chevron-down"></i></li>
+                                </div>
+                                <button>SEE MORE</button>
+                            </div>
+                        </div>
+                        <div class="you_should_follow trend_for_you" id="shouldFollow">
+                            <nav>
+                                <h6>You Should Follow</h6>
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script type="module" src="main2.js"></script>
+</body>
+
+</html>
+
+<!-- name h1
+img img -->
