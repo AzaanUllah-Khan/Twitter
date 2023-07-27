@@ -151,26 +151,6 @@ async function a() {
     });
 
 }
-// const post = document.getElementById('post')
-// post.addEventListener('click', async () => {
-//     const pT = document.getElementById('pt').value
-//     var n = new Date()
-//     var h = n.getHours()
-//     var m = n.getMinutes()
-//     try {
-//         const docRef = await addDoc(collection(db, "posts"), {
-//             text: pT,
-//             time: `${h}:${m}`,
-//             sender: CurrentUserName,
-//             senderEmail: CurrentUserEmail,
-//             senderNick: CurrentUserNick
-//         });
-//         // Wait for the new post to be added, then update the posts on the page.
-//         await a();
-//     } catch (e) {
-//         console.error("Error adding document: ", e);
-//     }
-// })
 function abc() {
     if (document.getElementById('nameUserSearch').value != "") {
         localStorage.setItem("searchingUser", (document.getElementById('nameUserSearch').value).toLowerCase())

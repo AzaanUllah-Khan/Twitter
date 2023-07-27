@@ -88,8 +88,23 @@ post.addEventListener('click', async () => {
             senderEmail: CurrentUserEmail,
             senderNick: CurrentUserNick
         });
-        // Wait for the new post to be added, then update the posts on the page.
-        await a();
+
+        Swal.fire({
+            title: 'POst Added Successfully',
+            text: 'Your POst wil be displayed on home Page',
+            icon: "success"
+        }).then(() => {
+            Swal.fire({
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                }
+            }).then(() => {
+                location.replace('./main.html')
+            })
+        })
+
     } catch (e) {
         console.error("Error adding document: ", e);
     }
