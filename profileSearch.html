@@ -17,7 +17,7 @@
 
         <div class="profile_card">
             <img src="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_640.jpg" class="profile_img"
-                id="img">
+                id="img" onclick="showPic(this.src)" style="cursor: pointer;">
             <h5 id="h2">User Name</h5>
             <h6 id="nick">@usernickname</h6>
             <address>
@@ -93,7 +93,6 @@
 
 
 
-
         async function show(n) {
             console.log(n);
             const q = query(collection(db, "users"), where("name", "==", localStorage.getItem("searchingUser")));
@@ -102,6 +101,16 @@
             if (!querySnapshot.empty) {
                 querySnapshot.forEach((doc) => {
                     console.log(doc.data().name);
+                    function showPic(url) {
+                        Swal.fire({
+                            html: `
+                            <img src="${url}" style="width: 200px; height: 200px; object-fit: cover; border-radius:50%" alt="Custom image">
+                            <h3 style="padding-top:10px; border-top: 1px solid #eee">${doc.data().name}<h3>
+                            <h5>${doc.data().about}<h5>`,
+                            showCloseButton: true
+                        });
+                    }
+                    window.showPic = showPic
                     document.getElementById('ab').innerHTML = doc.data().about;
                     document.getElementById('loc').innerHTML = `<i class="fa fa-location-dot aR"></i>${doc.data().country}`;
                     document.getElementById('nick').innerHTML = doc.data().nick;
@@ -129,6 +138,8 @@
         }
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
 </body>
 
 </html>
