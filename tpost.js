@@ -73,21 +73,48 @@ onAuthStateChanged(auth, async (user) => {
             })
     });
 });
+var khm;
 
-const post = document.getElementById('post')
+function GetImg() {
+    Swal.fire({
+        title: 'Add Image URL To Attach To Post',
+        input: 'text',
+        showCancelButton: true,
+        confirmButtonText: 'Attach Image',
+        showLoaderOnConfirm: true,
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            khm = result.value;
+        }
+    });
+}
+
+window.GetImg = GetImg;
+
+const post = document.getElementById('post');
 post.addEventListener('click', async () => {
-    const pT = document.getElementById('pt').value
-    var n = new Date()
-    var h = n.getHours()
-    var m = n.getMinutes()
+    const pT = document.getElementById('pt').value;
+    var n = new Date();
+    var h = n.getHours();
+    var m = n.getMinutes();
+
     try {
-        const docRef = await addDoc(collection(db, "posts"), {
+        // Prepare the data object for the Firestore document
+        const data = {
             text: pT,
             time: `${h}:${m}`,
             sender: CurrentUserName,
             senderEmail: CurrentUserEmail,
-            senderNick: CurrentUserNick
-        });
+            senderNick: CurrentUserNick,
+        };
+
+        // Add the "att" field if khm is defined
+        if (khm) {
+            data.att = khm;
+        }
+
+        const docRef = await addDoc(collection(db, "posts"), data);
 
         Swal.fire({
             title: 'POst Added Successfully',
@@ -98,17 +125,17 @@ post.addEventListener('click', async () => {
                 timer: 1000,
                 timerProgressBar: true,
                 didOpen: () => {
-                    Swal.showLoading()
+                    Swal.showLoading();
                 }
             }).then(() => {
-                location.replace('./main.html')
-            })
-        })
-
+                location.replace('./main.html');
+            });
+        });
     } catch (e) {
         console.error("Error adding document: ", e);
     }
-})
+});
+
 
 function abc() {
     if (document.getElementById('nameUserSearch').value != "") {
