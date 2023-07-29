@@ -129,8 +129,7 @@ async function displayMessages(name) {
                             <img src="${attHTML}" class="att">
                             <div class="data">
                                 <div class="data_card">
-                                    <i class="fa-solid fa-comment"></i>
-                                    <h4>870</h4>
+                                <i class="fa-solid fa-edit" onclick="edit('${doc.id}')"></i>
                                 </div>
                                 <div class="data_card">
                                     <i class="fa-solid fa-retweet"></i>
@@ -141,7 +140,7 @@ async function displayMessages(name) {
                                     <h4>89</h4>
                                 </div>
                                 <div class="data_card">
-                                    <i class="fa-solid fa-reply"></i>
+                                <i class="fa-solid fa-trash" onclick="del('${doc.id}')"></i>
                                 </div>
                             </div>
                         </div>
