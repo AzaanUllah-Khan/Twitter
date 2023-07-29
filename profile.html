@@ -14,7 +14,7 @@
     <div class="container">
         <div class="box box-one">
             <i class="fab fa-twitter" onclick="location.replace('./main.html')"><img
-                    src="https://img.icons8.com/color/50/000000/twitter--v1.png" /></i>
+                    src="https://img.icons8.com/color/50/000000/twitter--v1.png" id="user" /></i>
         </div>
         <div class="box box-two">
             <input type="text" placeholder="First Name" id="namef" />
@@ -31,7 +31,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-        import { getFirestore, collection, getDocs,doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+        import { getDownloadURL, getStorage, ref } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyAuuU5hk7qAe_1eXP2HrBFI7e-zxE3PTZw",
             authDomain: "twitter-clone-254e1.firebaseapp.com",
@@ -45,6 +47,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth();
+        const storage = getStorage();
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 const uid = user.uid;
@@ -59,6 +62,10 @@
                         document.getElementById('phone').value = doc.data().phone
                     }
                 });
+                getDownloadURL(ref(storage, user.email))
+                    .then((url) => {
+                        document.getElementById('user').src = url
+                    })
             }
         });
         const btnAccount = document.getElementById('editBtn')

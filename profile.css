@@ -22,7 +22,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     font-family: 'Poppins', sans-serif;
     border: 1px solid #AAB8C2;
 }
@@ -102,6 +102,13 @@ label img{
 }
 .box-one{
     padding-top: 10px;
+}
+#user{
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 460px) {

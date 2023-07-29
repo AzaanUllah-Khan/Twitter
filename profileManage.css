@@ -700,6 +700,20 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post
     padding-top: 5px;
     margin-bottom: 10px;
 }
+.post_card_bx img.att{
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .content .top_user_sec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
 
 header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .content .top_user_sec .first {
     display: flex;

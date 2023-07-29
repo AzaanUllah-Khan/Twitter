@@ -97,45 +97,56 @@ async function displayMessages(name) {
     post_here.innerHTML = ``;
     const q = query(collection(db, "posts"), where("senderEmail", "==", name));
     const querySnapshot = await getDocs(q);
+
     querySnapshot.forEach((doc) => {
+        const postData = doc.data();
+
+        // Check if the 'att' attribute exists in the post data
+        const attExists = postData.hasOwnProperty('att');
+
+        // Use the 'attExists' variable to conditionally include the 'att' in the generated HTML
+        const attHTML = attExists ? postData.att : '';
+
         getDownloadURL(ref(storage, doc.data().senderEmail))
             .then((url) => {
-                post_here.innerHTML += `
-          <div class="post_card_bx">
-      <div class="post_profile">
-      <img src="${url}">
-      </div>
-      <div class="content">
-      <div class="top_user_sec">
-      <div class="first">
-      <h5>${doc.data().sender}</h5>
-      <h6>${doc.data().senderNick}</h6>
-      </div>
-      <div class="time">
-      <i class="fa-regular fa-clock"></i>
-      <p>${doc.data().time}</p>
-      </div>
-      </div>
-      <p class="text_of_post">${doc.data().text}</p>
-      <div class="data">
-                                  <div class="data_card">
-                                  <i class="fa-solid fa-edit" onclick="edit('${doc.id}')"></i>
-                                      </div>
-                                      <div class="data_card">
-                                      <i class="fa-solid fa-retweet"></i>
-                                      <h4>11.3k</h4>
-                                      </div>
-                                      <div class="data_card">
-                                      <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                                      <h4>89</h4>
-                                      </div>
-                                      <div class="data_card">
-                                      <i class="fa-solid fa-trash" onclick="del('${doc.id}')"></i>
-                                      </div>
-                                      </div>
-                                      </div>
-                                      </div>`;
-            });
+                post_here.innerHTML += ` 
+                    <div class="post_card_bx">
+                        <div class="post_profile">
+                            <img src="${url}">
+                        </div>
+                        <div class="content">
+                            <div class="top_user_sec">
+                                <div class="first">
+                                    <h5>${doc.data().sender}</h5>
+                                    <h6>${doc.data().senderNick}</h6>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>${doc.data().time}</p>
+                                </div>
+                            </div>
+                            <p class="text_of_post">${doc.data().text}</p>
+                            <img src="${attHTML}" class="att">
+                            <div class="data">
+                                <div class="data_card">
+                                    <i class="fa-solid fa-comment"></i>
+                                    <h4>870</h4>
+                                </div>
+                                <div class="data_card">
+                                    <i class="fa-solid fa-retweet"></i>
+                                    <h4>11.3k</h4>
+                                </div>
+                                <div class="data_card">
+                                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                                    <h4>89</h4>
+                                </div>
+                                <div class="data_card">
+                                    <i class="fa-solid fa-reply"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            })
     });
 }
 

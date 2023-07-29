@@ -398,7 +398,7 @@ header section .profile_post_follow_bx .post_follow_bx .follow_bx {
 header section .profile_post_follow_bx .post_follow_bx .post nav {
     border-radius: 8px 8px 0 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    height: 7%;
+    height: 40px;
 }
 
 header section .profile_post_follow_bx .post_follow_bx .post nav li {
@@ -407,13 +407,13 @@ header section .profile_post_follow_bx .post_follow_bx .post nav li {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px 0;
+    padding: 3px 0 0;
     margin-right: 10px;
     transition: all .3s linear;
 }
 
 header section .profile_post_follow_bx .post_follow_bx .post nav li a {
-    padding: 12px 10px;
+    padding: 9px 10px;
 }
 
 header section .profile_post_follow_bx .post_follow_bx .post nav li:hover {
@@ -637,7 +637,6 @@ header section .profile_post_follow_bx .post_follow_bx .follow_bx .trend_for_you
 }
 
 header section .profile_post_follow_bx .post_follow_bx .follow_bx .you_should_follow {
-    margin-top: 15px;
     height: 250px;
     overflow-y: auto;
 }
