@@ -107,16 +107,16 @@ logout.addEventListener('click', () => {
 async function a() {
     var post_here = document.getElementById('post_here');
     const querySnapshot = await getDocs(collection(db, "posts"));
-    
+
     querySnapshot.forEach((doc) => {
         const postData = doc.data();
-        
+
         // Check if the 'att' attribute exists in the post data
         const attExists = postData.hasOwnProperty('att');
-        
+
         // Use the 'attExists' variable to conditionally include the 'att' in the generated HTML
         const attHTML = attExists ? postData.att : '';
-        
+
         getDownloadURL(ref(storage, doc.data().senderEmail))
             .then((url) => {
                 post_here.innerHTML += ` 
@@ -175,3 +175,16 @@ function abc() {
 }
 window.abc = abc
 a()
+
+document.getElementById('post_here').addEventListener('scroll', function () {
+    var postHereElement = document.getElementById('post_here');
+    var showButton = document.getElementById('showBTN');
+
+    if (postHereElement.scrollHeight - postHereElement.scrollTop <= postHereElement.clientHeight + 50) {
+        showButton.style.opacity = '0.5';
+        showButton.style.visibility = 'visible';
+    } else {
+        showButton.style.opacity = '0';
+        showButton.style.visibility = 'hidden';
+    }
+});
