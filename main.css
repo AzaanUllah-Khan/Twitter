@@ -449,7 +449,9 @@ header section .profile_post_follow_bx .post_follow_bx .post nav i {
     cursor: pointer;
     transition: all .3s linear;
 }
-
+i{
+    cursor: pointer;
+}
 header section .profile_post_follow_bx .post_follow_bx .post nav i:hover {
     color: rgb(0, 0, 0);
 }
@@ -806,7 +808,7 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post
 }
 
 header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post_card_bx .content .data .data_card {
-    width: 25%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1004,3 +1006,22 @@ header section .profile_post_follow_bx .post_follow_bx .post .post_main_bx .post
         width: 100%;
     }
 }
+
+/* CSS */
+@keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .pop-animation {
+    animation-name: pop;
+    animation-duration: 0.1s;
+  }
+  

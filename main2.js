@@ -136,8 +136,8 @@ async function displayMessages(name) {
                                     <h4>11.3k</h4>
                                 </div>
                                 <div class="data_card">
-                                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                                    <h4>89</h4>
+                                    <i class="fa-solid fa-heart"></i>
+                                    <h4>${doc.data().likes || 0}</h4>
                                 </div>
                                 <div class="data_card">
                                 <i class="fa-solid fa-trash" onclick="del('${doc.id}')"></i>

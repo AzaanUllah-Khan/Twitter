@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-import { getFirestore, collection, getDocs, query, where, addDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, query, where, updateDoc, doc, onSnapshot, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { getDownloadURL, getStorage, ref } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -140,23 +140,35 @@ async function a() {
                             <div class="data">
                                 <div class="data_card">
                                     <i class="fa-solid fa-comment"></i>
-                                    <h4>870</h4>
+                                    <h4>0</h4>
                                 </div>
                                 <div class="data_card">
-                                    <i class="fa-solid fa-retweet"></i>
-                                    <h4>11.3k</h4>
-                                </div>
-                                <div class="data_card">
-                                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
-                                    <h4>89</h4>
-                                </div>
-                                <div class="data_card">
-                                    <i class="fa-solid fa-reply"></i>
-                                </div>
+              <i class="fa-solid fa-heart" 
+                 id="heart-${doc.id}" 
+                 onclick="addToLike('${doc.id}')"
+                 style="color: ${postData.likedBy && postData.likedBy.includes(auth.currentUser.uid) ? '#ff0000' : ''};">
+              </i>
+              <h4 id="likes-${doc.id}">${postData.likes || 0}</h4>
+            </div>
                             </div>
                         </div>
                     </div>`;
             })
+        onSnapshot(doc.ref, (snapshot) => {
+            try {
+                const updatedData = snapshot.data();
+                const likesElement = document.getElementById(`likes-${doc.id}`);
+                if (likesElement) {
+                    likesElement.innerText = updatedData.likes || 0;
+                }
+                const heartIcon = document.getElementById(`heart-${doc.id}`);
+                if (heartIcon) {
+                    heartIcon.style.color = updatedData.likedBy && updatedData.likedBy.includes(auth.currentUser.uid) ? '#ff0000' : '';
+                }
+            } catch (error) {
+                console.error('Error updating like status:', error);
+            }
+        });
     });
 }
 
@@ -188,3 +200,64 @@ document.getElementById('post_here').addEventListener('scroll', function () {
         showButton.style.visibility = 'hidden';
     }
 });
+
+async function showLikes(postId) {
+    const postRef = doc(db, "posts", postId);
+    const unsubscribe = onSnapshot(postRef, (doc) => {
+        if (doc.exists()) {
+            const newLikesCount = doc.data().likes || 0;
+            const likesElement = document.getElementById(`likes-${postId}`);
+            likesElement.innerText = newLikesCount;
+        }
+    });
+}
+function hasLikedPost(postId) {
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
+    return likedPosts.includes(postId);
+}
+
+function updateLikedPosts(postId) {
+    const likedPosts = JSON.parse(localStorage.getItem("likedPosts")) || [];
+    if (hasLikedPost(postId)) {
+        // If the post is already liked, remove the like from local storage
+        localStorage.setItem(
+            "likedPosts",
+            JSON.stringify(likedPosts.filter((id) => id !== postId))
+        );
+    } else {
+        // If the post is not liked, add the like to local storage
+        localStorage.setItem("likedPosts", JSON.stringify([...likedPosts, postId]));
+    }
+}
+
+async function addToLike(id) {
+    const postRef = doc(db, "posts", id);
+    const postSnapshot = await getDoc(postRef);
+    const postData = postSnapshot.data();
+
+    // Check if the user ID is already in the likedBy array
+    if (postData.likedBy && postData.likedBy.includes(auth.currentUser.uid)) {
+        // If the user has already liked the post, remove the like (dislike the post)
+        await updateDoc(postRef, {
+            likes: Math.max((postData.likes || 0) - 1, 0),
+            likedBy: postData.likedBy.filter(userId => userId !== auth.currentUser.uid)
+        });
+    } else {
+        // If the user has not liked the post, add the like
+        await updateDoc(postRef, {
+            likes: (postData.likes || 0) + 1,
+            likedBy: [...(postData.likedBy || []), auth.currentUser.uid]
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+window.addToLike = addToLike;
+
